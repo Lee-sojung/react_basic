@@ -1,9 +1,38 @@
 
+import Header from './components/Header';
+import Panels from './components/panels';
+import Btns from './components/Btns';
+import Footer from './components/Footer';
 import './css/style.css';
+import { useState } from 'react';
 
 function App() {
+
+  const arr = ['Blizzard', 'Calm', 'Dusty_Road', 'Escape', 'Payday', 'Retreat', 'Seasonal', 'Vespers'];
+  const deg = 360/arr.length;
+  let [txt, setTxt] = useState(arr);
+
+
+
   return (
-    <figure></figure>
+    <figure>
+        
+        <Header />
+
+          <section>
+          {
+            txt.map((data,index)=>{
+                return <Panels key={index} num={index} txt={data} deg={deg} />
+            })
+          }
+
+
+          </section>
+
+          <Btns />
+        <Footer />
+
+    </figure>
   );
 }
 
